@@ -31,6 +31,7 @@ import http from "http";
 
 // 3
 const server = http.createServer((req, res) => {
+  res.setHeader("Content-Type", "text/plain");
   if (req.url !== "/users") {
     res.statusCode = 404;
     res.end("HTTP error " + res.statusCode);
