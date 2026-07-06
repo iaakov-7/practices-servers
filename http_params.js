@@ -41,3 +41,4 @@ function getQueryParams(rawUrl) {
   };
 }
 console.log(getQueryParams("/users?page=3&sort=name"));
+// הפסקתי תרגילים כי מיכאל אמר לעבור לפרוייקט גיבורי על שאותו צריכים לעשות ולא את התרגילים
