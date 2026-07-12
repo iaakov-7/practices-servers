@@ -55,3 +55,30 @@ function requestTimer(req, res, next) {
   req.startTime = time;
   next();
 }
+
+// 12
+const app = express();
+app.use(express.json());
+function logger(req, res, next) {
+  console.log(req.url, req.method);
+  next();
+}
+app.use(logger);
+app.get("/public", (req, res) => {
+  res.json({ message: "Public" });
+});
+app.get("/private", auth, (req, res) => {
+  res.json({ message: "Secret" });
+});
+
+// 13
+function validateBody(fields) {
+  return (req, res, next) => {
+    for (const f of fields) {
+      if (!req.body || req.body[f] === "undfind") {
+        return res.status(400).json({ message: `Missing required field ${f}` });
+      }
+    }
+    next();
+  };
+}
